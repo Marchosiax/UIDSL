@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group
+        android:id="@+id/grp1"
+        android:enabled="true">
+        <item
+            android:id="@+id/grp1Item1"
+            android:title="item 1" />
+        <item
+            android:id="@+id/grp1Item2"
+            android:title="item 2" />
+    </group>
+
+    <group
+        android:id="@+id/grp2"
+        android:enabled="true">
+        <item
+            android:id="@+id/grp2Item1"
+            android:title="item 1" />
+        <item
+            android:id="@+id/grp2Item2"
+            android:title="item 2" />
+    </group>
+
+    <item
+        android:id="@+id/item1"
+        android:title="item 1" />
+    <item
+        android:id="@+id/item2"
+        android:title="item 2" />
+
+</menu>
