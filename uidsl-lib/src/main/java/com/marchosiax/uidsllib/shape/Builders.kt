@@ -111,9 +111,9 @@ class ShapeBuilder {
     private var tintMode: PorterDuff.Mode = PorterDuff.Mode.ADD
     private var visible: Boolean = true
     private var restart: Boolean = false
-    private var size: Size = Size(0, 0)
     private var padding: Padding = Padding(0, 0, 0, 0)
     private var corner: Corner = Corner(0f, 0f, 0f, 0f)
+    private var size: Size? = null
     private var thickness: Thickness? = null
     private var gradient: Gradient? = null
     private var stroke: Stroke? = null
@@ -131,8 +131,8 @@ class ShapeBuilder {
     fun stroke(builder: StrokeBuilder.() -> Unit) =
         StrokeBuilder().apply(builder).also { stroke = it.build() }
 
-    fun padding(builder: PaddingBuilder.() -> Unit) =
-        PaddingBuilder().apply(builder).also { padding = it.build() }
+//    fun padding(builder: PaddingBuilder.() -> Unit) =
+//        PaddingBuilder().apply(builder).also { padding = it.build() }
 
     fun inset(builder: InsetBuilder.() -> Unit) =
         InsetBuilder().apply(builder).also { inset = it.build() }
@@ -164,10 +164,11 @@ class ShapeBuilder {
         )
 
         setDither(dither)
-        setSize(size.width, size.height)
         setVisible(visible, restart)
         setColor(this@ShapeBuilder.color)
-        setPadding(padding.left, padding.top, padding.right, padding.bottom)
+        //setPadding(padding.left, padding.top, padding.right, padding.bottom)
+
+        size?.let { setSize(it.width, it.height) }
 
         gradient?.let {
             colors = intArrayOf(it.startColor, it.centerColor, it.endColor)

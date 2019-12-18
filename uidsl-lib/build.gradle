@@ -7,7 +7,7 @@ publish {
 
     def groupProjectID = 'com.marchosiax.uidsllib'
     def artifactProjectID = 'UIDSL'
-    def publishVersionID = '0.1.0'
+    def publishVersionID = '0.1.2'
 
     userOrg = 'marchosiax'
     repoName = 'UIDSL'
@@ -38,6 +38,13 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
+    android {
+        lintOptions {
+            abortOnError false
+        }
+    }
+
 
 }
 

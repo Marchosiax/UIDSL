@@ -15,10 +15,6 @@ class DemoActivity : AppCompatActivity() {
         setContentView(R.layout.activity_demo)
 
         frm.background = rectangle {
-            size {
-                width = 120
-                height = 120
-            }
             corner { radius = 16f }
             gradient {
                 colors {
