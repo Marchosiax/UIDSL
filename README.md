@@ -1,5 +1,5 @@
 Kotlin DSL to replace XML
 
 ```
-implementation 'com.marchosiax.uidsllib:UIDSL:0.1.1'
+implementation 'com.marchosiax:UIDSL:0.2-beta01'
 ```
