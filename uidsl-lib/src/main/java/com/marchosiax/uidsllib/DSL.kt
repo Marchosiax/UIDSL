@@ -1,7 +1,9 @@
 package com.marchosiax.uidsllib
 
 import android.view.Menu
+import android.view.MenuItem
 import com.marchosiax.uidsllib.gradient.GradientBuilder
+import com.marchosiax.uidsllib.menu.Item
 import com.marchosiax.uidsllib.menu.MenuBuilder
 import com.marchosiax.uidsllib.shape.Shape
 import com.marchosiax.uidsllib.shape.ShapeBuilder
@@ -25,7 +27,26 @@ fun selector(builder: SelectorBuilder.() -> Unit) = SelectorBuilder().apply(buil
 
 fun Menu.build(builder: MenuBuilder.() -> Unit) {
     val m = MenuBuilder().apply(builder).build()
-    m.items.forEach { add(Menu.NONE, it.id, it.order, it.title) }
-    m.groups.forEach { group -> group.items.forEach { add(group.id, it.id, it.order, it.title) } }
 
+    m.items.forEach { menu ->
+        add(Menu.NONE, menu.id, menu.order, menu.title).apply { buildMenuItem(this, menu) }
+    }
+
+    m.groups.forEach { group ->
+        group.items.forEach { menu ->
+            add(group.id, menu.id, menu.order, menu.title).apply { buildMenuItem(this, menu) }
+        }
+    }
+
+}
+
+private fun buildMenuItem(item: MenuItem, menu: Item) {
+    item.apply {
+        isEnabled = menu.enabled
+        setIcon(menu.iconResource)
+
+        menu.iconDrawable?.let { setIcon(it) }
+        menu.intent?.let { setIntent(it) }
+        menu.onMenuClick?.let { setOnMenuItemClickListener { it() } }
+    }
 }

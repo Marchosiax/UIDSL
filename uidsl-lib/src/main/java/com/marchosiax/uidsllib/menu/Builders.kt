@@ -1,27 +1,42 @@
 package com.marchosiax.uidsllib.menu
 
+import android.content.Intent
+import android.graphics.drawable.Drawable
+import androidx.annotation.DrawableRes
 import androidx.annotation.IdRes
 import com.marchosiax.uidsllib.MenuDSL
 
 @MenuDSL
+@Suppress("MemberVisibilityCanBePrivate")
 class ItemBuilder {
 
-    @IdRes
     var id: Int = 0
-    var title: String? = null
-    var enabled: Boolean = true
+    var title: String = ""
+    var isEnabled: Boolean = true
+    var isVisible: Boolean = true
+    var isChecked: Boolean = false
     var order = 0
+    @DrawableRes
+    var iconResource: Int = 0
+    var iconDrawable: Drawable? = null
+    var intent: Intent? = null
+    private var onMenuClick: (() -> Boolean)? = null
+
+    fun onClick(onClick: () -> Boolean) {
+        this.onMenuClick = onClick
+    }
 
     internal fun build(): Item {
-        if (title == null)
-            throw NullPointerException("Title cannot be null")
-
-        return Item(id, title!!, enabled, order)
+        return Item(
+            id, title, isEnabled, isVisible, isChecked, order,
+            iconResource, iconDrawable, intent, onMenuClick
+        )
     }
 
 }
 
 @MenuDSL
+@Suppress("MemberVisibilityCanBePrivate")
 class GroupItemBuilder {
 
     @IdRes
