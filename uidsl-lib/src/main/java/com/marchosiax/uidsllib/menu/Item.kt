@@ -14,5 +14,6 @@ data class Item(
     @DrawableRes val iconResource: Int,
     val iconDrawable: Drawable?,
     val intent: Intent?,
+    val showAsAction:Int,
     val onMenuClick: (() -> Boolean)?
 )

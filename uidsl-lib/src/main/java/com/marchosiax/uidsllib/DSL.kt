@@ -43,7 +43,9 @@ fun Menu.build(builder: MenuBuilder.() -> Unit) {
 private fun buildMenuItem(item: MenuItem, menu: Item) {
     item.apply {
         isEnabled = menu.enabled
+
         setIcon(menu.iconResource)
+        setShowAsAction(menu.showAsAction)
 
         menu.iconDrawable?.let { setIcon(it) }
         menu.intent?.let { setIntent(it) }

@@ -2,6 +2,7 @@ package com.marchosiax.uidsllib.menu
 
 import android.content.Intent
 import android.graphics.drawable.Drawable
+import android.view.MenuItem
 import androidx.annotation.DrawableRes
 import androidx.annotation.IdRes
 import com.marchosiax.uidsllib.MenuDSL
@@ -20,6 +21,7 @@ class ItemBuilder {
     var iconResource: Int = 0
     var iconDrawable: Drawable? = null
     var intent: Intent? = null
+    var showAsAction: Int = MenuItem.SHOW_AS_ACTION_IF_ROOM
     private var onMenuClick: (() -> Boolean)? = null
 
     fun onClick(onClick: () -> Boolean) {
@@ -29,7 +31,7 @@ class ItemBuilder {
     internal fun build(): Item {
         return Item(
             id, title, isEnabled, isVisible, isChecked, order,
-            iconResource, iconDrawable, intent, onMenuClick
+            iconResource, iconDrawable, intent, showAsAction, onMenuClick
         )
     }
 
