@@ -5,9 +5,9 @@ apply plugin: 'com.novoda.bintray-release'
 
 publish {
 
-    def groupProjectID = 'com.marchosiax.uidsllib'
+    def groupProjectID = 'com.marchosiax'
     def artifactProjectID = 'UIDSL'
-    def publishVersionID = '0.1.2'
+    def publishVersionID = '0.2-beta01'
 
     userOrg = 'marchosiax'
     repoName = 'UIDSL'
